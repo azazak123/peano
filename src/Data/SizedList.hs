@@ -8,7 +8,7 @@ data SizedList a n where
   Empty :: SizedList a Z
   Cons :: a -> (SizedList a n) -> SizedList a (S n)
 
-(++) :: SizedList a n -> SizedList a m -> SizedList a (Sum n m)
+(++) :: SizedList a n -> SizedList a m -> SizedList a (Add n m)
 Empty ++ arr2 = arr2
 (Cons x xs) ++ arr2 = Cons x $ xs Data.SizedList.++ arr2
 

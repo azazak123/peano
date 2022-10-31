@@ -1,4 +1,5 @@
 {-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE UndecidableInstances #-}
 
 module Data.Peano where
 
@@ -6,6 +7,10 @@ data Z
 
 data S n
 
-type family Sum a b where
-  Sum Z b = b
-  Sum (S a) b = S (Sum a b)
+type family Add a b where
+  Add Z b = b
+  Add (S a) b = S (Add a b)
+
+type family Mul a b where
+  Mul (S Z) b = b
+  Mul (S a) b = Add (Mul a b) b
